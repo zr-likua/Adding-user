@@ -1,0 +1,27 @@
+net user Username Password /add
+Example: net user JohnDoe MyPassword123 /add
+
+Adding Groups:
+net localgroup Administrators Username /add
+Example: net localgroup Administrators JohnDoe /add
+
+Powershell:
+New-LocalUser -Name "Username" -Password (ConvertTo-SecureString "Password" -AsPlainText -Force) -FullName "Full Name" -Description "Description"
+Example: New-LocalUser -Name "JohnDoe" -Password (ConvertTo-SecureString "MyPassword123" -AsPlainText -Force) -FullName "John Doe" -Description "New User Account"
+
+Add user to a group:
+Add-LocalGroupMember -Group "Administrators" -Member "Username"
+Example: Add-LocalGroupMember -Group "Administrators" -Member "JohnDoe"
+
+Linux Based Adds:
+
+sudo adduser Username
+Example: sudo addduser Rashida
+
+Group:
+sudo usermod -aG sudo Username
+Example: sudo usermod -aG sudo johndoe
+
+To verify user:
+cat /etc/passwd | grep Username
+
